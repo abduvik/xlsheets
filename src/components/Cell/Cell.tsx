@@ -11,6 +11,9 @@ import { CellValueState } from "../../store/CellValueState";
 
 import classes from "./Cell.module.css";
 
+export const CELL_WIDTH = 100;
+export const CELL_HEIGHT = 25;
+
 export type CellProps = {};
 
 const Cell: FunctionComponent<CellProps> = (props) => {
