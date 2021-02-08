@@ -6,7 +6,7 @@ import React, {
   useRef,
   useState,
 } from "react";
-import { atom, useRecoilState } from "recoil";
+import { useRecoilState } from "recoil";
 import { CellValueState } from "../../store/CellValueState";
 
 import classes from "./Cell.module.css";
@@ -43,13 +43,18 @@ const Cell: FunctionComponent<CellProps> = (props) => {
 
   return isEditMode ? (
     <input
+      className={classes.CellInput}
       ref={inputRef}
       data-cell-id={props.cellId}
       value={cellValue}
       onChange={updateCellValueState}
     />
   ) : (
-    <div data-cell-id={props.cellId} onClick={changeLabeltoInput}>
+    <div
+      className={classes.CellLabel}
+      data-cell-id={props.cellId}
+      onClick={changeLabeltoInput}
+    >
       {cellValue}
     </div>
   );
