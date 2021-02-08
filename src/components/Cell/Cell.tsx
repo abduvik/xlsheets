@@ -11,9 +11,7 @@ import { CellValueState } from "../../store/CellValueState";
 
 import classes from "./Cell.module.css";
 
-export type CellProps = {
-  children: ComponentType | string;
-};
+export type CellProps = {};
 
 const Cell: FunctionComponent<CellProps> = (props) => {
   const [cellValue, setCellValue] = useRecoilState<string>(CellValueState);
