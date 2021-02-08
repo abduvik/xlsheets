@@ -14,17 +14,21 @@ import classes from "./Cell.module.css";
 export const CELL_WIDTH = 100;
 export const CELL_HEIGHT = 25;
 
-export type CellProps = {};
+export type CellProps = {
+  cellId: string;
+};
 
 const Cell: FunctionComponent<CellProps> = (props) => {
-  const [cellValue, setCellValue] = useRecoilState<string>(CellValueState);
+  const [cellValue, setCellValue] = useRecoilState<string>(
+    CellValueState(props.cellId)
+  );
   const [isEditMode, setIsEditMode] = useState(false);
   const inputRef = useRef(null);
 
   const changeLabeltoInput = () => setIsEditMode(true);
   const changeInputToLabel = () => setIsEditMode(false);
   const onClickOutsideInputHandler = (event: MouseEvent) => {
-    if ((event.target as HTMLElement)?.dataset?.cellId !== "2") {
+    if ((event.target as HTMLElement)?.dataset?.cellId !== props.cellId) {
       changeInputToLabel();
     }
   };
@@ -40,12 +44,12 @@ const Cell: FunctionComponent<CellProps> = (props) => {
   return isEditMode ? (
     <input
       ref={inputRef}
-      data-cell-id={"2"}
+      data-cell-id={props.cellId}
       value={cellValue}
       onChange={updateCellValueState}
     />
   ) : (
-    <div data-cell-id={"2"} onClick={changeLabeltoInput}>
+    <div data-cell-id={props.cellId} onClick={changeLabeltoInput}>
       {cellValue}
     </div>
   );
