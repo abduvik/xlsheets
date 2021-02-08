@@ -1,11 +1,10 @@
 import React from 'react';
 import './App.css';
+import Cell from './components/Cell/Cell';
 
 function App() {
   return (
-    <div className="App">
-      Hello
-    </div>
+    <Cell>Hello</Cell>
   );
 }
 
