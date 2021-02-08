@@ -1,3 +1,9 @@
+.SheetWrapper {
+  position: relative;
+  width: fit-content;
+}
+
 .Sheet {
   border-spacing: 0;
 }
+
