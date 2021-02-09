@@ -2,6 +2,7 @@ import React, {
   ChangeEvent,
   ComponentType,
   FunctionComponent,
+  KeyboardEvent,
   useEffect,
   useRef,
   useState,
@@ -28,15 +29,28 @@ const Cell: FunctionComponent<CellProps> = (props) => {
   );
 
   const [isEditMode, setIsEditMode] = useState(false);
-  const inputRef = useRef(null);
+  const inputRef = useRef<HTMLInputElement>(null);
 
-  const changeLabeltoInput = () => setIsEditMode(true);
+  const changeLabeltoInput = () => {
+    setIsEditMode(true);
+    setTimeout(() => {
+      inputRef.current?.focus();
+    });
+  };
   const changeInputToLabel = () => setIsEditMode(false);
+
   const onClickOutsideInputHandler = (event: MouseEvent) => {
     if ((event.target as HTMLElement)?.dataset?.cellId !== props.cellId) {
       changeInputToLabel();
     }
   };
+
+  const onDefocusInputHandler = (event: KeyboardEvent<HTMLInputElement>) => {
+    if (event.key === "Enter") {
+      setIsEditMode(false);
+    }
+  };
+
   const updateCellValueState = (event: ChangeEvent<HTMLInputElement>) =>
     setCellValue(event.target.value);
 
@@ -53,6 +67,7 @@ const Cell: FunctionComponent<CellProps> = (props) => {
       data-cell-id={props.cellId}
       value={cellValue}
       onChange={updateCellValueState}
+      onKeyDown={onDefocusInputHandler}
     />
   ) : (
     <div
