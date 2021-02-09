@@ -2,6 +2,7 @@ import { selector } from "recoil";
 import { memoize } from "../utils/memoize";
 import { CellValueState } from "./CellValueState";
 import { evaluate } from "mathjs";
+import { getEquationExpressionFromState } from "../utils/getEquationExpressionFromState";
 
 export const EvaluatedCellValueState = <T>(cellId: string) =>
   memoize(`evaluatedCell_${cellId}`, () =>
@@ -12,7 +13,16 @@ export const EvaluatedCellValueState = <T>(cellId: string) =>
 
         if (value.startsWith("=")) {
           try {
-            return evaluate(value.slice(1));
+            const evalutedExpression = getEquationExpressionFromState(
+              get,
+              value.slice(1)
+            );
+
+            if (evalutedExpression === "!ERROR") {
+              return "!ERROR";
+            }
+
+            return evaluate(evalutedExpression);
           } catch {
             return value;
           }
