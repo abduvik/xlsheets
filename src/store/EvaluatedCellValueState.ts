@@ -4,7 +4,7 @@ import { CellValueState } from "./CellValueState";
 import { evaluate } from "mathjs";
 import { getEquationExpressionFromState } from "../utils/getEquationExpressionFromState";
 
-export const EvaluatedCellValueState = <T>(cellId: string) =>
+export const EvaluatedCellValueState = (cellId: string) =>
   memoize(`evaluatedCell_${cellId}`, () =>
     selector({
       key: `evaluatedCell_${cellId}`,

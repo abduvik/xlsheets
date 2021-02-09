@@ -1,5 +1,4 @@
-import React, { ComponentType, FunctionComponent } from "react";
-import classes from "./Row.module.css";
+import React, { FunctionComponent } from "react";
 
 export type RowProps = {};
 

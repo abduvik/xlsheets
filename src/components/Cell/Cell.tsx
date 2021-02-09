@@ -1,6 +1,5 @@
 import React, {
   ChangeEvent,
-  ComponentType,
   FunctionComponent,
   KeyboardEvent,
   useEffect,
@@ -58,7 +57,7 @@ const Cell: FunctionComponent<CellProps> = (props) => {
     document.addEventListener("click", onClickOutsideInputHandler);
 
     return document.addEventListener("click", onClickOutsideInputHandler);
-  }, []);
+  });
 
   return isEditMode ? (
     <input

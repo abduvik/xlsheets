@@ -1,4 +1,4 @@
-import React, { ComponentType, FunctionComponent } from "react";
+import React, { FunctionComponent } from "react";
 import Column from "../Column/Column";
 import Row from "../Row/Row";
 import AxisCell from "../AxisCell/AxisCell";
@@ -24,9 +24,11 @@ const Sheet: FunctionComponent<SheetProps> = (props) => {
           <Row>
             {[...Array(numberOfColumns + 1)].map((column, columnIndex) =>
               columnIndex !== 0 ? (
-                <AxisCell>{numberToChar(columnIndex - 1)}</AxisCell>
+                <AxisCell key={columnIndex}>
+                  {numberToChar(columnIndex - 1)}
+                </AxisCell>
               ) : (
-                <AxisCell />
+                <AxisCell key={columnIndex} />
               )
             )}
           </Row>

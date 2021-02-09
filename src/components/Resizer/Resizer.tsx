@@ -1,4 +1,4 @@
-import React, { FunctionComponent, useEffect } from "react";
+import React, { FunctionComponent } from "react";
 import { useRecoilState } from "recoil";
 import classes from "./Resizer.module.css";
 import { SheetSizeState } from "../../store/SheetSizeState";
@@ -6,7 +6,7 @@ import { SheetSizeState } from "../../store/SheetSizeState";
 export type ResizerProps = {};
 
 const Resizer: FunctionComponent<ResizerProps> = (props) => {
-  const [sheetSize, setSheetSize] = useRecoilState(SheetSizeState);
+  const [,setSheetSize] = useRecoilState(SheetSizeState);
 
   const initDrag = () => {
     document.addEventListener("mousemove", doDrag);
