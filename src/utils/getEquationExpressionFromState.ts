@@ -42,7 +42,7 @@ export const getEquationExpressionFromState = (
 
   return cellValues.reduce(
     (finalExpression, cellValue) =>
-      finalExpression.replace(cellValue.cellId, cellValue.value.toString()),
+      finalExpression.replaceAll(cellValue.cellId, cellValue.value.toString()),
     expression
   );
 };
