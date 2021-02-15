@@ -1,6 +1,14 @@
-# Getting Started with Create React App
+# XlSheets App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## [Live Demo](https://xlsheets.netlify.app)
+
+## Description
+
+A simple Google Sheets clone application that mimics the same behavior of calculating numbers and expressions based on different inputs using cells. It was built using ReactJS, Recoil and MathJs libraries.
+
+## YouTube Video
+
+[![Using Recoil, React and Mathjs to build a simple Google Sheets clone](http://img.youtube.com/vi/ywOUEBUM0pY/0.jpg)](http://www.youtube.com/watch?v=ywOUEBUM0pY "Using Recoil, React and Mathjs to build a simple Google Sheets clone")
 
 ## Available Scripts
 
