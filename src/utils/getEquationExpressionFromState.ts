@@ -40,9 +40,13 @@ export const getEquationExpressionFromState = (
       };
     });
 
-  return cellValues.reduce(
+  const evaluatedExpression = cellValues.reduce(
     (finalExpression, cellValue) =>
       finalExpression.replaceAll(cellValue.cellId, cellValue.value.toString()),
     expression
   );
+
+  // Evaluated expression needs to be added between brackets to avoid issues caused
+  // by Mathematical operations priority 
+  return `(${evaluatedExpression})`;
 };
